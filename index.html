@@ -154,7 +154,7 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 </style>
 </head>
 <body>
-<div class="popup-dim" id="noticePopup"><div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle"><button class="popup-close" id="popupClose" aria-label="팝업 닫기">×</button><div class="popup-top"><p class="popup-kicker">센터 이용 안내</p><h2 id="popupTitle">어르신의 이용 상담을<br>도와드립니다.</h2><p>장기요양등급을 받으신 어르신의<br>주간보호센터 이용에 대해 상담해 드립니다.</p><a class="popup-phone" href="tel:053-983-5582">053-983-5582</a></div><div class="popup-actions"><a href="tel:053-983-5582">전화 상담하기</a><button type="button" id="popupToday">오늘 하루 보지 않기</button></div></div></div>
+<div class="popup-dim" id="noticePopup"><div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle"><button class="popup-close" id="popupClose" type="button" aria-label="팝업 닫기" onclick="document.getElementById('noticePopup').style.display='none'">×</button><div class="popup-top"><p class="popup-kicker">센터 이용 안내</p><h2 id="popupTitle">어르신의 이용 상담을<br>도와드립니다.</h2><p>장기요양등급을 받으신 어르신의<br>주간보호센터 이용에 대해 상담해 드립니다.</p><a class="popup-phone" href="tel:053-983-5582">053-983-5582</a></div><div class="popup-actions"><a href="tel:053-983-5582">전화 상담하기</a><button type="button" id="popupToday" onclick="try{localStorage.setItem('centerNoticeHidden','1')}catch(e){};document.getElementById('noticePopup').style.display='none'">오늘 하루 보지 않기</button></div></div></div>
 <header class="header"><div class="nav wrap">
 <a class="brand" href="https://blog.naver.com/dgpdcc" target="_blank" rel="noopener"><span class="mark">동구</span>동구공립재가노인복지센터</a>
 <button class="menu" aria-label="메뉴">☰</button>
