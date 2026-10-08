@@ -19,7 +19,9 @@ a{color:inherit;text-decoration:none}
 .links a:hover{color:var(--pink)}
 .menu{display:none;border:0;background:none;font-size:25px}
 .hero{min-height:100svh;padding-top:74px;position:relative;display:flex;align-items:center;overflow:hidden;background:#222}
-.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hero-slideshow{position:absolute;inset:0;z-index:0;overflow:hidden;background:#222}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;opacity:0;transition:opacity 1.2s ease-in-out}
+.hero-photo.is-active{opacity:1;z-index:1}
 .hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.38) 42%,rgba(0,0,0,.08) 100%)}
 .hero .wrap{position:relative;z-index:2;padding:65px 0 105px}
 .operator{font-size:16px;color:rgba(255,255,255,.9);font-weight:700;margin:0 0 25px}
@@ -162,7 +164,11 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 </div></header>
 
 <main><section class="hero">
-<img class="hero-photo" src="center-exterior.png" alt="동구공립재가노인복지센터 외관">
+<div class="hero-slideshow" aria-label="센터 계절별 외관 사진">
+<img class="hero-photo hero-slide is-active" src="center-exterior.png" alt="동구공립재가노인복지센터 외관">
+<img class="hero-photo hero-slide" src="중앙 외부여름.png" alt="동구공립재가노인복지센터 여름 외관">
+<img class="hero-photo hero-slide" src="중앙외부겨울.jpg" alt="동구공립재가노인복지센터 겨울 외관">
+</div>
 <div class="wrap">
 <p class="operator">동구청 위탁 · <a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단 운영中</a></p>
 <h1>동구공립<br>재가노인복지센터<span class="small">팔공산에 위치한<br><b>안전하고 믿을 수 있는</b><br>공립 주간보호센터</span></h1>
@@ -197,6 +203,29 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 </main>
 
 <footer><div class="wrap footer"><div><strong>동구공립재가노인복지센터</strong><div><a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단</a> 위탁운영</div><div>대구광역시 동구 파계로 558-2 · 2층(일반실) · 3층(치매전담실)</div></div><div class="footer-call">상담문의<a href="tel:053-983-5582">053-983-5582</a></div></div><div class="wrap copy">© 동구공립재가노인복지센터. 모든 권리 보유</div></footer>
-<script>document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.menu'),n=document.querySelector('.links');if(m&&n){m.onclick=()=>n.classList.toggle('open');n.querySelectorAll('a').forEach(a=>a.onclick=()=>n.classList.remove('open'))}const popup=document.getElementById('noticePopup'),closeBtn=document.getElementById('popupClose'),todayBtn=document.getElementById('popupToday');if(!popup)return;const closePopup=()=>{popup.style.display='none'};let hidden=false;try{hidden=localStorage.getItem('centerNoticeHidden')==='1'}catch(e){}popup.style.display=hidden?'none':'flex';if(closeBtn)closeBtn.addEventListener('click',closePopup);const closeBottom=document.getElementById('popupCloseBottom');if(closeBottom)closeBottom.addEventListener('click',closePopup);if(todayBtn)todayBtn.addEventListener('click',()=>{try{localStorage.setItem('centerNoticeHidden','1')}catch(e){}closePopup()})});</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.menu'),n=document.querySelector('.links');if(m&&n){m.onclick=()=>n.classList.toggle('open');n.querySelectorAll('a').forEach(a=>a.onclick=()=>n.classList.remove('open'))}const popup=document.getElementById('noticePopup'),closeBtn=document.getElementById('popupClose'),todayBtn=document.getElementById('popupToday');if(!popup)return;const closePopup=()=>{popup.style.display='none'};let hidden=false;try{hidden=localStorage.getItem('centerNoticeHidden')==='1'}catch(e){}popup.style.display=hidden?'none':'flex';if(closeBtn)closeBtn.addEventListener('click',closePopup);const closeBottom=document.getElementById('popupCloseBottom');if(closeBottom)closeBottom.addEventListener('click',closePopup);if(todayBtn)todayBtn.addEventListener('click',()=>{try{localStorage.setItem('centerNoticeHidden','1')}catch(e){}closePopup()})});<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const m=document.querySelector('.menu'),n=document.querySelector('.links');
+  if(m&&n){m.onclick=()=>n.classList.toggle('open');n.querySelectorAll('a').forEach(a=>a.onclick=()=>n.classList.remove('open'))}
+  const popup=document.getElementById('noticePopup'),closeBtn=document.getElementById('popupClose'),todayBtn=document.getElementById('popupToday');
+  if(popup){
+    const closePopup=()=>{popup.style.display='none'};
+    let hidden=false;try{hidden=localStorage.getItem('centerNoticeHidden')==='1'}catch(e){}
+    popup.style.display=hidden?'none':'flex';
+    if(closeBtn)closeBtn.addEventListener('click',closePopup);
+    const closeBottom=document.getElementById('popupCloseBottom');if(closeBottom)closeBottom.addEventListener('click',closePopup);
+    if(todayBtn)todayBtn.addEventListener('click',()=>{try{localStorage.setItem('centerNoticeHidden','1')}catch(e){}closePopup()});
+  }
+  const slides=[...document.querySelectorAll('.hero-slide')];
+  if(slides.length>1){
+    let current=0;
+    setInterval(()=>{
+      slides[current].classList.remove('is-active');
+      current=(current+1)%slides.length;
+      slides[current].classList.add('is-active');
+    },4000);
+  }
+});
+</script>
 </body>
 </html>
