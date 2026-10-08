@@ -78,7 +78,25 @@ a{color:inherit;text-decoration:none}
 .meal-grid div{padding:25px 0;border-bottom:1px solid var(--line)}
 .meal-grid div:nth-child(odd){padding-right:30px;border-right:1px solid var(--line)}
 .meal-grid div:nth-child(even){padding-left:30px}
-.mealLayout{display:grid;grid-template-columns:1fr 1.45fr;gap:24px;align-items:stretch}.mealList{display:grid;grid-template-rows:repeat(4,1fr);gap:14px}.mealCard{padding:25px 28px;border-radius:22px;background:#fff;border:1px solid #eee;box-shadow:0 8px 30px #00000008}.mealCard .mealLabel{color:var(--pink);font-size:16px;font-weight:800}.mealCard h2{font-size:30px;margin:10px 0 9px}.mealCard p{margin:0;color:#666;font-size:17px;line-height:1.65}.mealPhotos{display:grid;grid-template-rows:repeat(3,1fr);gap:14px}.mealPhoto{min-height:150px;border-radius:22px;background:linear-gradient(135deg,#edf4f1,#f7e9ef);display:flex;align-items:center;justify-content:center;color:#888;font-weight:700;overflow:hidden;position:relative}.mealPhoto img{width:100%;height:100%;object-fit:cover;display:block}.meal-slideshow{position:absolute;inset:0;overflow:hidden}.meal-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}.meal-slide.is-active{opacity:1}.mealPhoto .photoCaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:#ffffffde;border-radius:0 0 18px 18px;color:#555;font-size:14px;line-height:1.4;text-align:center;font-weight:700}.mealInfo{margin-top:24px;padding:28px;border-radius:22px;background:#fff;border:1px solid #eee;box-shadow:0 8px 30px #00000008}.mealInfo h2{font-size:25px;margin:0 0 14px}.mealInfo p{margin:5px 0;color:#555;line-height:1.7}.mealInfo strong{color:var(--green)}.mealCard .mealDescription{margin:0;color:#666;font-size:15px;line-height:1.6}.meal-grid span{display:block;color:var(--pink);font-size:13px;font-weight:900;margin-bottom:5px}
+.mealLayout{display:grid;grid-template-columns:1fr 1.45fr;gap:24px;align-items:stretch}
+.mealList{display:grid;grid-template-rows:repeat(4,1fr);gap:14px}
+.mealCard{padding:25px 28px;border-radius:22px;background:#fff;border:1px solid #eee;box-shadow:0 8px 30px #00000008}
+.mealCard .mealLabel{color:var(--pink);font-size:16px;font-weight:800}
+.mealCard h2{font-size:30px;margin:10px 0 9px}
+.mealCard p{margin:0;color:#666;font-size:17px;line-height:1.65}
+.mealPhotos{display:grid;grid-template-rows:repeat(3,1fr);gap:14px}
+.mealPhoto{min-height:150px;border-radius:22px;background:linear-gradient(135deg,#edf4f1,#f7e9ef);display:flex;align-items:center;justify-content:center;color:#888;font-weight:700;overflow:hidden;position:relative}
+.mealPhoto img{width:100%;height:100%;object-fit:cover;display:block}
+.meal-slideshow{position:absolute;inset:0;overflow:hidden}
+.meal-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
+.meal-slide.is-active{opacity:1}
+.mealPhoto .photoCaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:#ffffffde;border-radius:0 0 18px 18px;color:#555;font-size:14px;line-height:1.4;text-align:center;font-weight:700}
+.mealInfo{margin-top:24px;padding:28px;border-radius:22px;background:#fff;border:1px solid #eee;box-shadow:0 8px 30px #00000008}
+.mealInfo h2{font-size:25px;margin:0 0 14px}
+.mealInfo p{margin:5px 0;color:#555;line-height:1.7}
+.mealInfo strong{color:var(--green)}
+.mealCard .mealDescription{margin:0;color:#666;font-size:15px;line-height:1.6}
+.meal-grid span{display:block;color:var(--pink);font-size:13px;font-weight:900;margin-bottom:5px}
 .manage{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
 .manage div{background:#fff;padding:20px}
 .manage b,.manage span{display:block}
@@ -156,11 +174,11 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 </style>
 </head>
 <body>
-<div class="popup-dim" id="noticePopup"><div class="popup" role="dialog" aria-modal="true" aria-label="센터 안내"><button class="popup-close" id="popupClose" type="button" aria-label="팝업 닫기" onclick="document.getElementById('noticePopup').style.display='none'">×</button><a class="popup-link" href="https://gamchun.com/" target="_blank" rel="noopener"><img class="popup-image" src="팝업.png" alt="센터 안내"></a><div class="popup-actions"><button id="popupToday" type="button">오늘 하루 보지 않기</button><button id="popupCloseBottom" type="button">닫기</button></div></div></div>
+<div class="popup-dim" id="noticePopup"><div class="popup" role="dialog" aria-modal="true" aria-label="센터 안내"><button class="popup-close" id="popupClose" type="button" aria-label="팝업 닫기">×</button><a class="popup-link" href="https://gamchun.com/" target="_blank" rel="noopener"><img class="popup-image" src="팝업.png" alt="센터 안내"></a><div class="popup-actions"><button id="popupToday" type="button">오늘 하루 보지 않기</button><button id="popupCloseBottom" type="button">닫기</button></div></div></div>
 <header class="header"><div class="nav wrap">
 <a class="brand" href="https://blog.naver.com/dgpdcc" target="_blank" rel="noopener"><span class="mark">동구</span>동구공립재가노인복지센터</a>
 <button class="menu" aria-label="메뉴">☰</button>
-<nav class="links"><a href="#users">이용대상</a><a href="#space">센터공간</a><a href="#meal">식사메뉴</a><a href="#program">프로그램</a><a href="#about">센터소개</a><a href="#care">안전·돌봄</a><a href="#guide">이용안내</a><a href="#contact">상담문의</a></nav>
+<nav class="links"><a href="#users">이용대상</a><a href="#space">센터공간</a><a href="#meal">식사메뉴</a><a href="#program">프로그램</a><a href="#about">센터소개</a><a href="#care">안전·돌봄</a><a href="#guide">이용안내</a><a href="#directions">오시는길</a><a href="#contact">상담문의</a></nav>
 </div></header>
 
 <main><section class="hero">
@@ -187,71 +205,60 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 <div class="room-grid">
 <article class="room-card"><img src="center-2f.jpeg" alt="동구공립재가노인복지센터 2층 일반실"><div class="body"><span class="num">02F · 정원 20명</span><h3>2층 · 일반실</h3><p>주·야간보호 어르신을 위한 생활공간으로 일상생활과 다양한 프로그램이 이루어집니다.</p></div></article>
 <article class="room-card"><img src="center-3f.jpg" alt="동구공립재가노인복지센터 3층 치매전담실"><div class="body"><span class="num">03F · 정원 20명</span><h3>3층 · 치매전담실</h3><p>일반실과 구분된 별도의 공간에서 운영되며, 전 직원이 치매전문교육을 이수했습니다.</p></div></article>
-</div></div></section><section id="meal" class="section soft"><div class="wrap"><p class="kicker">식사메뉴</p><h2>매일 먹는 식사,<br>기본을 지킵니다.</h2><p class="intro">동구어린이·사회복지급식관리지원센터의 관리를 받으며 센터 조리원이 식사를 직접 조리합니다. 식자재는 주 3회 이상 당일 납품받아 사용합니다.</p>
-<section class="mealLayout"><div class="mealList"><div class="mealCard"><div class="mealLabel">오전 간식</div><h2>죽 또는 스프</h2><p class="mealDescription">어르신께서 부담 없이 드실 수 있는 따뜻한 간식을 제공합니다.</p></div><div class="mealCard"><div class="mealLabel">점심 식사</div><h2>밥 · 국 · 4찬</h2><p class="mealDescription">밥과 국은 기본<br>김치를 포함한 4찬으로 구성</p></div><div class="mealCard"><div class="mealLabel">오후 간식</div><h2>과일 · 과자 · 빵 · 떡 등</h2><p class="mealDescription">다양한 간식을 준비하여 오후 시간의 활력을 더합니다.</p></div><div class="mealCard"><div class="mealLabel">저녁 식사</div><h2>밥 · 국 · 4찬</h2><p class="mealDescription">밥과 국은 기본<br>김치를 포함한 4찬으로 구성</p></div></div><div class="mealPhotos"><div class="mealPhoto"><div class="meal-slideshow" aria-label="식사 사진"><img class="meal-slide is-active" src="식사-01.jpg" alt="센터 식사 메뉴"><img class="meal-slide" src="식사-001.jpg" alt="센터 식사 메뉴"></div><div class="photoCaption">절기와 계절을 담은 특별한 메뉴</div></div><div class="mealPhoto"><img src="meal-02.png" alt="다양한 죽으로 매일 새롭게"><div class="photoCaption">다양한 죽으로 매일 새롭게</div></div><div class="mealPhoto"><div class="meal-slideshow" aria-label="조리실 사진"><img class="meal-slide is-active" src="식사-03.jpg" alt="오픈형 조리실"><img class="meal-slide" src="식사-003.jpg" alt="오픈형 조리실"></div><div class="photoCaption">오픈형 조리실, 깨끗하고 위생적으로 관리합니다.</div></div></div></section><div class="mealInfo"><h2>식사 관리</h2><p><strong>급식 관리</strong> → 동구어린이·사회복지급식관리지원센터의 관리를 받습니다.</p><p><strong>직접 조리</strong> → 센터 조리원이 식사를 직접 전량 조리합니다.</p><p><strong>식자재</strong> → 식자재는 주 3회 이상 당일 납품받는 신선한 재료를 사용합니다.</p></div></div></section><section id="program" class="section soft"><div class="wrap"><p class="kicker">프로그램</p><h2>사진으로 보는<br>센터 프로그램</h2><p class="intro">신체활동과 인지기능 유지, 일상생활의 활력을 돕기 위한 다양한 프로그램을 어르신의 상태와 특성을 고려하여 운영합니다.</p>
+</div></div></section>
+
+<section id="meal" class="section soft"><div class="wrap"><p class="kicker">식사메뉴</p><h2>매일 먹는 식사,<br>기본을 지킵니다.</h2><p class="intro">동구어린이·사회복지급식관리지원센터의 관리를 받으며 센터 조리원이 식사를 직접 조리합니다. 식자재는 주 3회 이상 당일 납품받아 사용합니다.</p>
+<section class="mealLayout"><div class="mealList"><div class="mealCard"><div class="mealLabel">오전 간식</div><h2>죽 또는 스프</h2><p class="mealDescription">어르신께서 부담 없이 드실 수 있는 따뜻한 간식을 제공합니다.</p></div><div class="mealCard"><div class="mealLabel">점심 식사</div><h2>밥 · 국 · 4찬</h2><p class="mealDescription">밥과 국은 기본<br>김치를 포함한 4찬으로 구성</p></div><div class="mealCard"><div class="mealLabel">오후 간식</div><h2>과일 · 과자 · 빵 · 떡 등</h2><p class="mealDescription">다양한 간식을 준비하여 오후 시간의 활력을 더합니다.</p></div><div class="mealCard"><div class="mealLabel">저녁 식사</div><h2>밥 · 국 · 4찬</h2><p class="mealDescription">밥과 국은 기본<br>김치를 포함한 4찬으로 구성</p></div></div><div class="mealPhotos"><div class="mealPhoto"><div class="meal-slideshow meal-slideshow-one" aria-label="식사 사진"><img class="meal-slide is-active" src="meal-01.jpg" alt="센터 식사 메뉴"><img class="meal-slide" src="식사-001.jpg" alt="센터 식사 메뉴"></div><div class="photoCaption">절기와 계절을 담은 특별한 메뉴</div></div><div class="mealPhoto"><img src="meal-02.png" alt="다양한 죽으로 매일 새롭게"><div class="photoCaption">다양한 죽으로 매일 새롭게</div></div><div class="mealPhoto"><div class="meal-slideshow meal-slideshow-three" aria-label="조리실 사진"><img class="meal-slide is-active" src="meal-03.jpg" alt="오픈형 조리실"><img class="meal-slide" src="식사-003.jpg" alt="오픈형 조리실"></div><div class="photoCaption">오픈형 조리실, 깨끗하고 위생적으로 관리합니다.</div></div></div></section><div class="mealInfo"><h2>식사 관리</h2><p><strong>급식 관리</strong> → 동구어린이·사회복지급식관리지원센터의 관리를 받습니다.</p><p><strong>직접 조리</strong> → 센터 조리원이 식사를 직접 전량 조리합니다.</p><p><strong>식자재</strong> → 식자재는 주 3회 이상 당일 납품받는 신선한 재료를 사용합니다.</p></div></div></section>
+
+<section id="program" class="section soft"><div class="wrap"><p class="kicker">프로그램</p><h2>사진으로 보는<br>센터 프로그램</h2><p class="intro">신체활동과 인지기능 유지, 일상생활의 활력을 돕기 위한 다양한 프로그램을 어르신의 상태와 특성을 고려하여 운영합니다.</p>
 <div class="program-grid">
 <article class="program-card"><img src="program-cognitive.png" alt="인지활동 프로그램"><div class="body"><span class="num">01</span><h3>인지활동</h3><p>색칠하기, 만들기 등 다양한 활동</p></div></article>
 <article class="program-card"><img src="program-physical.png" alt="신체활동 프로그램"><div class="body"><span class="num">02</span><h3>신체활동</h3><p>가벼운 운동과 신체기능 유지 활동</p></div></article>
 <article class="program-card"><img src="program-leisure.png" alt="여가·문화활동 프로그램"><div class="body"><span class="num">03</span><h3>여가·문화활동</h3><p>음악, 미술, 놀이 등 즐거운 활동</p></div></article>
 <article class="program-card"><img src="program-outdoor.png" alt="사회활동·외부활동 프로그램"><div class="body"><span class="num">04</span><h3>사회활동·외부활동</h3><p>외부활동과 다양한 경험</p></div></article>
-</div><section id="about" class="section"><div class="wrap feature-grid"><div><p class="kicker">센터소개</p><h2><a href="https://blog.naver.com/dgpdcc" target="_blank" rel="noopener">동구공립<br>재가노인복지센터</a></h2><p class="lead">어르신의 일상 가까이에서 함께하는<br>공립 주간보호센터입니다.</p><p class="intro">노인장기요양보험 제도에 따라 어르신께 필요한 돌봄과 일상생활 지원을 제공합니다. 공립기관으로서 정직하고 투명한 운영을 바탕으로 어르신 한 분 한 분의 일상을 존중하며 세심하게 돌보겠습니다.</p><div class="info-grid"><div><small>운영형태</small><strong>공립 주간보호센터</strong></div><div><small>운영법인</small><strong><a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단</a> 위탁운영</strong></div><div><small>일반실</small><strong>2층 · 정원 20명</strong></div><div><small>치매전담실</small><strong>3층 · 정원 20명</strong></div></div></div><div class="visual-card"><img src="센터소개.jpg" alt="동구공립재가노인복지센터 소개"><div class="caption">팔공산의 자연과 함께하는<br>동구공립재가노인복지센터</div></div></div></section><section id="care" class="section"><div class="wrap"><p class="kicker">안전·돌봄</p><h2>어르신의 안전과 돌봄을<br>차분하게 살핍니다.</h2><p class="intro">센터에 머무르는 동안 어르신의 건강상태와 생활 모습을 살피고 필요한 일상생활을 지원합니다.</p>
+</div></div></section>
+
+<section id="about" class="section"><div class="wrap feature-grid"><div><p class="kicker">센터소개</p><h2><a href="https://blog.naver.com/dgpdcc" target="_blank" rel="noopener">동구공립<br>재가노인복지센터</a></h2><p class="lead">어르신의 일상 가까이에서 함께하는<br>공립 주간보호센터입니다.</p><p class="intro">노인장기요양보험 제도에 따라 어르신께 필요한 돌봄과 일상생활 지원을 제공합니다. 공립기관으로서 정직하고 투명한 운영을 바탕으로 어르신 한 분 한 분의 일상을 존중하며 세심하게 돌보겠습니다.</p><div class="info-grid"><div><small>운영형태</small><strong>공립 주간보호센터</strong></div><div><small>운영법인</small><strong><a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단</a> 위탁운영</strong></div><div><small>일반실</small><strong>2층 · 정원 20명</strong></div><div><small>치매전담실</small><strong>3층 · 정원 20명</strong></div></div></div><div class="visual-card"><img src="센터소개.jpg" alt="동구공립재가노인복지센터 소개"><div class="caption">팔공산의 자연과 함께하는<br>동구공립재가노인복지센터</div></div></div></section>
+
+<section id="care" class="section"><div class="wrap"><p class="kicker">안전·돌봄</p><h2>어르신의 안전과 돌봄을<br>차분하게 살핍니다.</h2><p class="intro">센터에 머무르는 동안 어르신의 건강상태와 생활 모습을 살피고 필요한 일상생활을 지원합니다.</p>
 <div class="care-grid"><article class="care-card"><img src="care-safety.png" alt="어르신 안전 및 돌봄"><div class="body"><h3>안전한 생활 지원</h3><p>센터 내 생활공간과 활동을 살피며 안전한 일상을 지원합니다.</p></div></article><article class="care-card"><img src="송영차량.jpg" alt="센터 송영 차량"><div class="body"><h3>송영 및 귀가 지원</h3><p>등·하원 과정에서 어르신의 안전한 이동을 지원합니다.</p></div></article></div>
-<div class="care-text"><div><strong>건강상태 확인</strong><p>등원 시 어르신의 상태를 확인하고 일상생활 중 건강상태를 살핍니다.</p></div><div><strong>일상생활 지원</strong><p>식사, 이동, 위생관리 등 어르신에게 필요한 일상생활을 지원합니다.</p></div><div><strong>보호자와의 소통</strong><p>어르신의 생활 및 건강상태에 변화가 있을 경우 보호자와 소통합니다.</p></div><div><strong>상태 변화 확인</strong><p>어르신의 생활 모습을 지속적으로 확인하며 필요한 돌봄을 제공합니다.</p></div></div></div></section><section id="guide" class="section soft"><div class="wrap"><p class="kicker">이용안내</p><h2>이용안내</h2><div class="guide"><div><h3 style="font-size:24px">이용 대상</h3><p class="intro">노인장기요양보험의 장기요양등급을 받은 어르신<br><strong style="color:var(--green);font-size:22px">1~5등급 및 인지지원등급</strong></p><h3 style="font-size:24px;margin-top:32px">운영 안내</h3><p class="intro">설·추석 명절 당일을 제외하고 운영합니다.</p></div>
-<div class="steps"><div><b>01</b><span><strong>상담 문의</strong>전화로 센터 이용에 대해 상담합니다.</span></div><div><b>02</b><span><strong>이용 상담 및 안내</strong>사회복지사가 직접 방문하여 어르신의 상태와 보호자님의 상황을 확인하고 이용에 필요한 내용을 안내합니다.</span></div><div><b>03</b><span><strong>이용 결정 및 계약</strong></span></div><div><b>04</b><span><strong>센터 이용 시작</strong></span></div></div></div></div></section><section id="contact" class="contact"><div class="wrap"><p class="kicker">CONTACT</p><h2>궁금한 점이 있으신가요?</h2><p>전화 또는 방문을 통해 어르신의 이용에 필요한 사항을 안내해 드립니다.</p>
+<div class="care-text"><div><strong>건강상태 확인</strong><p>등원 시 어르신의 상태를 확인하고 일상생활 중 건강상태를 살핍니다.</p></div><div><strong>일상생활 지원</strong><p>식사, 이동, 위생관리 등 어르신에게 필요한 일상생활을 지원합니다.</p></div><div><strong>보호자와의 소통</strong><p>어르신의 생활 및 건강상태에 변화가 있을 경우 보호자와 소통합니다.</p></div><div><strong>상태 변화 확인</strong><p>어르신의 생활 모습을 지속적으로 확인하며 필요한 돌봄을 제공합니다.</p></div></div></div></section>
+
+<section id="guide" class="section soft"><div class="wrap"><p class="kicker">이용안내</p><h2>이용안내</h2><div class="guide"><div><h3 style="font-size:24px">이용 대상</h3><p class="intro">노인장기요양보험의 장기요양등급을 받은 어르신<br><strong style="color:var(--green);font-size:22px">1~5등급 및 인지지원등급</strong></p><h3 style="font-size:24px;margin-top:32px">운영 안내</h3><p class="intro">설·추석 명절 당일을 제외하고 운영합니다.</p></div>
+<div class="steps"><div><b>01</b><span><strong>상담 문의</strong>전화로 센터 이용에 대해 상담합니다.</span></div><div><b>02</b><span><strong>이용 상담 및 안내</strong>사회복지사가 직접 방문하여 어르신의 상태와 보호자님의 상황을 확인하고 이용에 필요한 내용을 안내합니다.</span></div><div><b>03</b><span><strong>이용 결정 및 계약</strong></span></div><div><b>04</b><span><strong>센터 이용 시작</strong></span></div></div></div></div></section>
+
+<section id="directions" class="section"><div class="wrap"><p class="kicker">오시는길</p><h2>센터로 오시는 길</h2><p class="intro">동구공립재가노인복지센터는 대구광역시 동구 파계로 558-2에 위치하고 있습니다.</p><div class="map-photo"><img src="map.jpg" alt="동구공립재가노인복지센터 오시는 길 지도"><p class="map-caption">대구광역시 동구 파계로 558-2 · 2층(일반실) · 3층(치매전담실)</p></div></div></section>
+
+<section id="contact" class="contact"><div class="wrap"><p class="kicker">상담문의</p><h2>궁금한 점이 있으신가요?</h2><p>전화 또는 방문을 통해 어르신의 이용에 필요한 사항을 안내해 드립니다.</p>
 <div class="contact-grid"><div><span>상담 문의</span><a class="bigphone" href="tel:053-983-5582">053-983-5582</a></div><div><span>방문 상담</span><strong>센터에 직접 방문하여 상담하실 수 있습니다.</strong></div></div>
 <div class="address"><strong>동구공립재가노인복지센터</strong><span><a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단</a> 위탁운영</span><span>대구광역시 동구 파계로 558-2</span><span>2층(일반실) · 3층(치매전담실)</span></div></div></section>
 </main>
 
 <footer><div class="wrap footer"><div><strong>동구공립재가노인복지센터</strong><div><a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단</a> 위탁운영</div><div>대구광역시 동구 파계로 558-2 · 2층(일반실) · 3층(치매전담실)</div></div><div class="footer-call">상담문의<a href="tel:053-983-5582">053-983-5582</a></div></div><div class="wrap copy">© 동구공립재가노인복지센터. 모든 권리 보유</div></footer>
+
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  const m=document.querySelector('.menu');
-  const n=document.querySelector('.links');
-  if(m&&n){
-    m.addEventListener('click',()=>n.classList.toggle('open'));
-    n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
-  }
-
-  const popup=document.getElementById('noticePopup');
-  const closeBtn=document.getElementById('popupClose');
-  const closeBottom=document.getElementById('popupCloseBottom');
-  const todayBtn=document.getElementById('popupToday');
-
+  const m=document.querySelector('.menu'),n=document.querySelector('.links');
+  if(m&&n){m.addEventListener('click',()=>n.classList.toggle('open'));n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));}
+  const popup=document.getElementById('noticePopup'),closeBtn=document.getElementById('popupClose'),closeBottom=document.getElementById('popupCloseBottom'),todayBtn=document.getElementById('popupToday');
   if(popup){
     const closePopup=()=>{popup.style.display='none';};
-    let hidden=false;
-    try{hidden=localStorage.getItem('centerNoticeHidden')==='1';}catch(e){}
+    let hidden=false;try{hidden=localStorage.getItem('centerNoticeHidden')==='1';}catch(e){}
     popup.style.display=hidden?'none':'flex';
-
     if(closeBtn)closeBtn.addEventListener('click',closePopup);
     if(closeBottom)closeBottom.addEventListener('click',closePopup);
-    if(todayBtn){
-      todayBtn.addEventListener('click',()=>{
-        try{localStorage.setItem('centerNoticeHidden','1');}catch(e){}
-        closePopup();
-      });
-    }
+    if(todayBtn)todayBtn.addEventListener('click',()=>{try{localStorage.setItem('centerNoticeHidden','1');}catch(e){}closePopup();});
   }
-
   const slides=[...document.querySelectorAll('.hero-slide')];
-  if(slides.length>1){
-    let current=0;
-    setInterval(()=>{
-      slides[current].classList.remove('is-active');
-      current=(current+1)%slides.length;
-      slides[current].classList.add('is-active');
-    },4000);
-  }
-
-  const mealSlides=[...document.querySelectorAll('.meal-slide')];
-  if(mealSlides.length>1){
-    let mealCurrent=0;
-    setInterval(()=>{
-      mealSlides[mealCurrent].classList.remove('is-active');
-      mealCurrent=(mealCurrent+1)%mealSlides.length;
-      mealSlides[mealCurrent].classList.add('is-active');
-    },4000);
-  }
+  if(slides.length>1){let current=0;setInterval(()=>{slides[current].classList.remove('is-active');current=(current+1)%slides.length;slides[current].classList.add('is-active');},4000);}
+  const mealGroups=[...document.querySelectorAll('.meal-slideshow')];
+  mealGroups.forEach(group=>{
+    const groupSlides=[...group.querySelectorAll('.meal-slide')];
+    if(groupSlides.length>1){
+      let current=0;
+      setInterval(()=>{groupSlides[current].classList.remove('is-active');current=(current+1)%groupSlides.length;groupSlides[current].classList.add('is-active');},4000);
+    }
+  });
 });
 </script>
 </body>
