@@ -170,6 +170,7 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 .contact-grid>div+div{padding-left:0;border-left:0}
 .footer{flex-direction:column}
 }
+.music-toggle{position:fixed;right:22px;bottom:22px;z-index:50;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border:0;border-radius:999px;background:var(--pink);color:#fff;font:800 14px/1.2 Arial,'Noto Sans KR',sans-serif;box-shadow:0 8px 24px rgba(34,30,31,.22);cursor:pointer}.music-toggle:hover{background:#d92778}.music-toggle:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.music-toggle .music-symbol{font-size:18px;line-height:1}@media(max-width:650px){.music-toggle{right:14px;bottom:14px;padding:12px 15px;font-size:13px}}
 .popup-dim{position:fixed;inset:0;z-index:100;background:rgba(20,16,18,.58);display:flex;align-items:center;justify-content:center;padding:22px}.popup{position:relative;width:min(620px,100%);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28)}.popup-link{display:block;cursor:pointer}.popup-image{display:block;width:100%;height:auto}.popup-actions{display:flex;gap:10px;padding:12px 14px;background:#fff;border-top:1px solid var(--line)}.popup-actions button{flex:1;height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-size:14px;font-weight:800;cursor:pointer}.popup-actions button:first-child{background:var(--ink);color:#fff;border-color:var(--ink)}.popup-close{position:absolute;right:13px;top:10px;width:38px;height:38px;border:0;background:rgba(255,255,255,.82);border-radius:50%;font-size:24px;line-height:1;cursor:pointer;color:#555;z-index:2}@media(max-width:650px){.popup{border-radius:18px}.popup-close{right:9px;top:8px;width:34px;height:34px;font-size:21px}}
 </style>
 </head>
@@ -236,6 +237,8 @@ footer{background:#171415;color:#9f969a;padding:35px 0 28px;font-size:12px}
 
 <footer><div class="wrap footer"><div><strong>동구공립재가노인복지센터</strong><div><a href="https://gamchun.com/" target="_blank" rel="noopener">사회복지법인 감천복지재단</a> 위탁운영</div><div>대구광역시 동구 파계로 558-2 · 2층(일반실) · 3층(치매전담실)</div></div><div class="footer-call">상담문의<a href="tel:053-983-5582">053-983-5582</a></div></div><div class="wrap copy">© 동구공립재가노인복지센터. 모든 권리 보유</div></footer>
 
+<button id="musicToggle" class="music-toggle" type="button" aria-pressed="false" aria-label="배경음악 켜기"><span class="music-symbol" aria-hidden="true">♫</span><span id="musicToggleText">배경음 켜기</span></button>
+
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   const m=document.querySelector('.menu'),n=document.querySelector('.links');
@@ -251,6 +254,62 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   const slides=[...document.querySelectorAll('.hero-slide')];
   if(slides.length>1){let current=0;setInterval(()=>{slides[current].classList.remove('is-active');current=(current+1)%slides.length;slides[current].classList.add('is-active');},4000);}
+  // 방문자가 버튼을 눌렀을 때만 재생되는 잔잔한 피아노풍 배경음
+  const musicButton=document.getElementById('musicToggle');
+  const musicText=document.getElementById('musicToggleText');
+  if(musicButton){
+    let audioContext=null, musicTimer=null, noteIndex=0, musicOn=false;
+    const activeNodes=new Set();
+    const chords=[[60,64,67,72],[57,60,64,69],[53,57,60,65],[55,59,62,67]];
+    const melody=[72,74,76,79,76,74,72,67,69,72,76,72,69,67,64,67];
+    const midiHz=n=>440*Math.pow(2,(n-69)/12);
+    const playNote=(midi,when,duration,volume)=>{
+      if(!audioContext)return;
+      const fundamental=audioContext.createOscillator();
+      const harmonic=audioContext.createOscillator();
+      const gain=audioContext.createGain();
+      const harmonicGain=audioContext.createGain();
+      fundamental.type='sine';harmonic.type='triangle';
+      fundamental.frequency.value=midiHz(midi);
+      harmonic.frequency.value=midiHz(midi)*2.01;
+      harmonicGain.gain.value=.16;
+      gain.gain.setValueAtTime(.0001,when);
+      gain.gain.exponentialRampToValueAtTime(volume,when+.018);
+      gain.gain.exponentialRampToValueAtTime(Math.max(.0001,volume*.32),when+.18);
+      gain.gain.exponentialRampToValueAtTime(.0001,when+duration);
+      fundamental.connect(gain);harmonic.connect(harmonicGain);harmonicGain.connect(gain);gain.connect(audioContext.destination);
+      activeNodes.add(fundamental);activeNodes.add(harmonic);
+      const cleanup=()=>{activeNodes.delete(fundamental);activeNodes.delete(harmonic);try{fundamental.disconnect();harmonic.disconnect();gain.disconnect();harmonicGain.disconnect();}catch(e){}};
+      fundamental.onended=cleanup;
+      fundamental.start(when);harmonic.start(when);
+      fundamental.stop(when+duration+.03);harmonic.stop(when+duration+.03);
+    };
+    const playNextNotes=()=>{
+      if(!musicOn||!audioContext)return;
+      const beat=.48, step=noteIndex%8, chord=chords[Math.floor(noteIndex/8)%chords.length];
+      const now=audioContext.currentTime+.04;
+      const arp=[0,2,1,3,1,2,0,3];
+      playNote(chord[arp[step]],now,.9,.045);
+      if(step===0||step===4)playNote(melody[Math.floor(noteIndex/2)%melody.length],now,.72,.025);
+      noteIndex++;
+    };
+    musicButton.addEventListener('click',async()=>{
+      if(!musicOn){
+        const AudioCtx=window.AudioContext||window.webkitAudioContext;
+        if(!AudioCtx){musicText.textContent='이 브라우저는 재생을 지원하지 않습니다';return;}
+        try{
+          if(!audioContext)audioContext=new AudioCtx();
+          if(audioContext.state==='suspended')await audioContext.resume();
+          musicOn=true;playNextNotes();musicTimer=window.setInterval(playNextNotes,480);
+          musicText.textContent='배경음 끄기';musicButton.setAttribute('aria-pressed','true');musicButton.setAttribute('aria-label','배경음악 끄기');
+        }catch(e){musicOn=false;musicText.textContent='배경음 재생 오류';}
+      }else{
+        musicOn=false;if(musicTimer!==null){window.clearInterval(musicTimer);musicTimer=null;}
+        activeNodes.forEach(node=>{try{node.stop();}catch(e){}});activeNodes.clear();
+        musicText.textContent='배경음 켜기';musicButton.setAttribute('aria-pressed','false');musicButton.setAttribute('aria-label','배경음악 켜기');
+      }
+    });
+  }
   const mealGroups=[...document.querySelectorAll('.meal-slideshow')];
   mealGroups.forEach(group=>{
     const groupSlides=[...group.querySelectorAll('.meal-slide')];
